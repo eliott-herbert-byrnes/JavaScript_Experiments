@@ -21,14 +21,14 @@ const imageObject = {
 for (let i = 0; i < images.length; i++) {
     const newImage = document.createElement('img');
     newImage.setAttribute('src', images[i]);
-    newImage.setAttribute('alt', imageObject[images[i].split('.')[0]]);
+    newImage.setAttribute('alt', imageObject[images[i].split('/').pop().split('.')[0]]);
     thumbBar.appendChild(newImage);
     newImage.onclick = function(e) {
         displayedImage.src = e.target.src;
     }
 }
 
-// Wiring up the Darken/Lighten button
+// Darken / Lighten button
 btn.onclick = function() {
     const btnClass = btn.getAttribute('class');
     if (btnClass === 'dark') {
