@@ -1,81 +1,100 @@
-# Story Generator Overview
+# JSON_Introduction Overview
 
-- Generates a silly story when the "Generate random story" button is pressed.
-- Replaces the default name "Bob" in the story with a custom name, only if a custom name is entered into the "Enter custom name" text field before the generate button is pressed.
-- Converts the default US weight and temperature quantities and units in the story into UK equivalents if the UK radio button is checked before the generate button is pressed.
-- Generates a new random silly story every time the button is pressed.
-
+- This script dynamically fetches and displays superhero data from a JSON file using JavaScript.
 ---
 
 # Main.js Overview / Notes
 
-**Selectors for HTML objects**
-```javascript
-const customName = document.getElementById('customname');
-const randomize = document.querySelector('.randomize');
-const story = document.querySelector('.story');
+**HTML Structure**
+```easylanguage
+- The <header> and <section> elements are empty at the start.
+- These will later be populated dynamically with JavaScript.
 ```
 
-**Return a random value from an array**
+**populate() Function (Fetching Data)**
 ```javascript
-function randomValueFromArray(array) {
-  // Generate a random index within the valid range of the array
-  // Math.random = Generates a random decimal number between 0 (inclusive) and 1 (exclusive).
-  // Multiply by array.length = If array.length is '3' this generates a decimal between 0 - 2.9999
-  // Math.floor = Rounds down the given decimal number to the nearest whole number
-  const random = Math.floor(Math.random() * array.length);
-  // Uses 'random' index to retrieve a random element from the array
-  return array[random];
+async function populate() {
+// Fetching JSON data
+// requestURL: The URL of the JSON file containing superhero data.
+  const requestURL =
+    "https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json";
+// Send network request to fetch the JSON file.
+  const request = new Request(requestURL);
+
+// Convert response into a JavaScript object.
+  const response = await fetch(request);
+  const superHeroes = await response.json();
+
+// Calls two functions to update the page. 
+  populateHeader(superHeroes);
+  populateHeroes(superHeroes);
 }
 ```
 
-**Story text / Randomized values.**
+**populateHeader(obj) Function (Updating the Header)**
 ```javascript
-const storyText = `It was 94 fahrenheit outside, so :insertx: went for a walk. When they got to :inserty:, they stared in horror for a few moments, then :insertz:. Bob saw the whole thing, but was not surprised — :insertx: weighs 300 pounds, and it was a hot day.`;
+function populateHeader(obj) {
+// Select HTML header element <header> .
+  const header = document.querySelector("header");
+// Dynamically creates <h1> element, set's text from JSON.
+  const myH1 = document.createElement("h1");
+  myH1.textContent = obj.squadName;
+// Append elements to <header>, making them visibile on the page.
+  header.appendChild(myH1);
 
-// Arrays of random values
-const insertX = ["Willy the Goblin", "Big Daddy", "Father Christmas"];
-const insertY = ["the soup kitchen", "Disneyland", "the White House"];
-const insertZ = ["spontaneously combusted", "melted into a puddle on the sidewalk", "turned into a slug and crawled away"];
-
-// Event listener for the randomize button
-randomize.addEventListener('click', result);
+// Dynamically creates <p> element. Set's text from JSON.
+  const myPara = document.createElement("p");
+  myPara.textContent = `Hometown: ${obj.homeTown} // Formed: ${obj.formed}`;
+  header.appendChild(myPara);
+}
 ```
 
-**Function to display the story**
+**populateHeroes(obj) Function (Creating Hero Profiles)**
 ```javascript
-function result() {
+function populateHeroes(obj) {
+// Selects <section> where 'hero profiles' from JSON will be inserted.
+  const section = document.querySelector("section");
+// Assigns 'members' array from JSON to heroes variable.
+  const heroes = obj.members;
 
-  // Create a new story from the storyText variable
-  let newStory = storyText;
+// Loop through the members array.
+  for (const hero of heroes) {
+// Dyanamically create elements for array value assignment. 
+    const myArticle = document.createElement("article");
+    const myH2 = document.createElement("h2");
+    const myPara1 = document.createElement("p");
+    const myPara2 = document.createElement("p");
+    const myPara3 = document.createElement("p");
+    const myList = document.createElement("ul");
 
-  // Select random values from the arrays and insert them into the newStory variable
-  const xItem = randomValueFromArray(insertX);
-  const yItem = randomValueFromArray(insertY);
-  const zItem = randomValueFromArray(insertZ);
+// Set text content for <elements> from JSON array values.
+    myH2.textContent = hero.name;
+    myPara1.textContent = `Secret identity: ${hero.secretIdentity}`;
+    myPara2.textContent = `Age: ${hero.age}`;
+    myPara3.textContent = "Superpowers:";
 
-  // Replace the placeholder text with the random values
-  newStory = newStory.replace(/:insertx:/g, xItem);
-  newStory = newStory.replace(/:inserty:/g, yItem);
-  newStory = newStory.replace(/:insertz:/g, zItem);
+// Assign array from JSON file to 'superPowers' variable.
+    const superPowers = hero.powers;
+// Loop through array to create <li> items and add them to <ul>.
+    for (const power of superPowers) {
+      const listItem = document.createElement("li");
+      listItem.textContent = power;
+      myList.appendChild(listItem);
+    }
 
-  // If the custom name field is not empty, replace the placeholder text with the custom name
-  if (customName.value !== '') {
-    const name = customName.value;
-    newStory = newStory.replace(/Bob/g, name);
+// Append text elements to article element for visability.
+    myArticle.appendChild(myH2);
+    myArticle.appendChild(myPara1);
+    myArticle.appendChild(myPara2);
+    myArticle.appendChild(myPara3);
+    myArticle.appendChild(myList);
 
+// Append everything to <section> element, making info appear in the UI.
+    section.appendChild(myArticle);
+
+// Runs function immediately when the page loads.
+// fetches data and updates the page dynamically. 
+    populate();
   }
-
-  // If the UK radio button is checked, convert the weight and temperature values
-  if (document.getElementById("uk").checked) {
-    const weight = Math.round(300 / 14) + ' stone';
-    const temperature = Math.round((94 - 32) * 5 / 9) + ' centigrade';
-    newStory = newStory.replace(/94 fahrenheit/g, temperature);
-    newStory = newStory.replace(/300 pounds/g, weight);
-  }
-
-  // Display the new story
-  story.textContent = newStory;
-  story.style.visibility = 'visible';
 }
 ```
