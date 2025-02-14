@@ -1,6 +1,8 @@
-# JSON_Introduction Overview
+# JSON_JS_Conversion
 
-- This script dynamically fetches and displays superhero data from a JSON file using JavaScript.
+- Fetch JSON data from an external file.
+- Parse the JSON into JavaScript objects.
+- Function experiments with parsed JSON -> JS objects.
 ---
 
 # Main.js Overview / Notes
@@ -11,90 +13,83 @@
 - These will later be populated dynamically with JavaScript.
 ```
 
-**populate() Function (Fetching Data)**
+**Selecting and Creating DOM Elements**
 ```javascript
-async function populate() {
-// Fetching JSON data
-// requestURL: The URL of the JSON file containing superhero data.
-  const requestURL =
-    "https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json";
-// Send network request to fetch the JSON file.
-  const request = new Request(requestURL);
+// Select HTML header element <header>
+  const section = document.querySelector('section');
 
-// Convert response into a JavaScript object.
-  const response = await fetch(request);
-  const superHeroes = await response.json();
+// Create two new HTML <p> elements
+  let para1 = document.createElement('p');
+  let para2 = document.createElement('p');
 
-// Calls two functions to update the page. 
-  populateHeader(superHeroes);
-  populateHeroes(superHeroes);
-}
+// Create two new variables to store the cat info  
+  let motherInfo = 'The mother cats are called ';
+  let kittenInfo = '';
 ```
 
-**populateHeader(obj) Function (Updating the Header)**
+**Fetching the JSON File**
 ```javascript
-function populateHeader(obj) {
-// Select HTML header element <header> .
-  const header = document.querySelector("header");
-// Dynamically creates <h1> element, set's text from JSON.
-  const myH1 = document.createElement("h1");
-  myH1.textContent = obj.squadName;
-// Append elements to <header>, making them visibile on the page.
-  header.appendChild(myH1);
+// URL of JSON file stored in requestURL
+  const requestURL = 'https://mdn.github.io/learning-area/javascript/oojs/tasks/json/sample.json';
 
-// Dynamically creates <p> element. Set's text from JSON.
-  const myPara = document.createElement("p");
-  myPara.textContent = `Hometown: ${obj.homeTown} // Formed: ${obj.formed}`;
-  header.appendChild(myPara);
-}
+// Sends a request to receive the JSON file
+  fetch(requestURL)
+// Converts the response into plain text (JSON format)
+  .then(response => response.text())
+// Calls displayCatInfo() with the JSON text as an argument
+  .then(text => displayCatInfo(text))
 ```
 
-**populateHeroes(obj) Function (Creating Hero Profiles)**
+**Processing the JSON Data**
 ```javascript
-function populateHeroes(obj) {
-// Selects <section> where 'hero profiles' from JSON will be inserted.
-  const section = document.querySelector("section");
-// Assigns 'members' array from JSON to heroes variable.
-  const heroes = obj.members;
+  function displayCatInfo(catString) {
+//Total kitten count + male kittens
+  let total = 0;
+  let male = 0;
 
-// Loop through the members array.
-  for (const hero of heroes) {
-// Dyanamically create elements for array value assignment. 
-    const myArticle = document.createElement("article");
-    const myH2 = document.createElement("h2");
-    const myPara1 = document.createElement("p");
-    const myPara2 = document.createElement("p");
-    const myPara3 = document.createElement("p");
-    const myList = document.createElement("ul");
+// Converts JSON string into a JavaScript array
+  const cats = JSON.parse(catString);
 
-// Set text content for <elements> from JSON array values.
-    myH2.textContent = hero.name;
-    myPara1.textContent = `Secret identity: ${hero.secretIdentity}`;
-    myPara2.textContent = `Age: ${hero.age}`;
-    myPara3.textContent = "Superpowers:";
+// Create an empty array to store the mother cat names
+  let motherNames = [];
 
-// Assign array from JSON file to 'superPowers' variable.
-    const superPowers = hero.powers;
-// Loop through array to create <li> items and add them to <ul>.
-    for (const power of superPowers) {
-      const listItem = document.createElement("li");
-      listItem.textContent = power;
-      myList.appendChild(listItem);
+// Loops through each mother cat object in cats
+// If a cat has a name, it is added to the motherNames array
+  for (let i = 0; i < cats.length; i++) {
+    if (cats[i].name !== '') {
+      motherNames.push(cats[i].name);
     }
 
-// Append text elements to article element for visability.
-    myArticle.appendChild(myH2);
-    myArticle.appendChild(myPara1);
-    myArticle.appendChild(myPara2);
-    myArticle.appendChild(myPara3);
-    myArticle.appendChild(myList);
-
-// Append everything to <section> element, making info appear in the UI.
-    section.appendChild(myArticle);
-
-// Runs function immediately when the page loads.
-// fetches data and updates the page dynamically. 
-    populate();
+// Loops through each kitten inside the current mother cat’s kittens array
+// Increment the total kitten count/ male count
+  for (let j = 0; j < cats[i].kittens.length; j++) {
+    total++;
+    if (cats[i].kittens[j].gender === 'm') {
+      male++;
+    }
   }
-}
+```
+
+**Formatting the Mother Cat Names**
+```javascript
+// Formatting the mother cat names
+// If there is only 1 value in array, display only the name
+  if (motherNames.length === 1) {
+    motherInfo += `${motherNames[0]}.`;
+    // If there are 2 values in array, display both names with 'and' in between
+  } else if (motherNames.length === 2) {
+    motherInfo += `${motherNames[0]} and ${motherNames[1]}.`;
+    // If there are more than 2 values in array, display all names with commas and 'and' before the last name
+  } else {
+    let lastMother = motherNames.pop();
+    motherInfo += motherNames.join(', ') + ', and ' + lastMother + '.';
+  }
+
+// Details on kittens to be added to the kittenInfo variable
+  kittenInfo = `There are ${total} kittens in total, ${male} male kittens and 
+  ${total - male} female kittens.`;
+
+// Set the text content of the <p> elements to the mother and kitten info
+  para1.textContent = motherInfo;
+  para2.textContent = kittenInfo;
 ```
