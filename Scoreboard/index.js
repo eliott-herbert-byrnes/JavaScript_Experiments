@@ -217,12 +217,12 @@ document.getElementById('g-btn-3').textContent = scoreBtn3;
 
 function hAddScore1(score) {
 
-        if (score1 < 99) {
-            score1 += 1;
-            document.getElementById('score-1').textContent = score1;
-            updateScoreColor();
-            startShotClock();
-        }
+    if (score1 < 99) {
+        score1 += 1;
+        document.getElementById('score-1').textContent = score1;
+        updateScoreColor();
+        startShotClock();
+    }
 }
 
 function hAddScore2(score) {

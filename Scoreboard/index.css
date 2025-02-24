@@ -11,29 +11,26 @@ body {
 }
 
 .wrapper {
-    width: 575px;           /* Matches the main-console width */
+    width: 575px;
     display: flex;
-    flex-direction: column; /* Stack new-game and main-console vertically */
-    align-items: flex-start; /* Align children to the left */
-    gap: 5px;              /* Space between new-game and main-console */
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
 }
 
 .new-game {
     display: flex;
     flex-direction: column;
-    /* Aligns items in a row */
     justify-content: center;
-    /* Stacks child elements vertically */
     align-items: center;
-    /* Centers them horizontally */
     background: rgb(36, 36, 36);
     width: 143.75px;
     height: 50px;
     border-radius: 10px;
     margin-bottom: 7.5px;
     box-shadow:
-    0 2px 4px 0 rgb(0 0 0 / 40%),
-    0 2.5rem 5rem 0 rgb(0 0 0 / 20%);
+        0 2px 4px 0 rgb(0 0 0 / 40%),
+        0 2.5rem 5rem 0 rgb(0 0 0 / 20%);
 }
 
 .new-game:hover {
@@ -44,39 +41,33 @@ body {
 .main-console {
     display: flex;
     justify-content: center;
-    /* Centers items horizontally */
-    /* align-items: center; /* Aligns vertically */
     background: rgb(36, 36, 36);
     width: 575px;
     height: 385px;
-    /* Full viewport height */
     gap: 100px;
-    /* Adds spacing between HOME and GUEST */
     border: 0px solid #9aabd8;
     border-radius: 10px;
     box-shadow:
-    0 2px 4px 0 rgb(0 0 0 / 40%),
-    0 2.5rem 5rem 0 rgb(0 0 0 / 20%);
+        0 2px 4px 0 rgb(0 0 0 / 40%),
+        0 2.5rem 5rem 0 rgb(0 0 0 / 20%);
 }
 
 .second-console {
     display: flex;
-    flex-direction:row;
-    /* Aligns items in a row */
+    flex-direction: row;
     justify-content: flex-start;
-    /* Stacks child elements vertically */
     align-items: center;
-    /* Centers them horizontally */
     gap: 17px;
-    background: rgb(36, 36, 36);;
+    background: rgb(36, 36, 36);
+    ;
     width: 575px;
     height: 75px;
     border: 0px solid #9aabd8;
     border-radius: 10px;
     margin-top: 7.5px;
     box-shadow:
-    0 2px 4px 0 rgb(0 0 0 / 40%),
-    0 2.5rem 5rem 0 rgb(0 0 0 / 20%);
+        0 2px 4px 0 rgb(0 0 0 / 40%),
+        0 2.5rem 5rem 0 rgb(0 0 0 / 20%);
 }
 
 .period-container {
@@ -86,8 +77,8 @@ body {
     border-radius: 10px;
     margin-left: 20px;
     box-shadow:
-    0 2px 4px 0 rgb(0 0 0 / 40%),
-    0 2.5rem 5rem 0 rgb(0 0 0 / 20%);
+        0 2px 4px 0 rgb(0 0 0 / 40%),
+        0 2.5rem 5rem 0 rgb(0 0 0 / 20%);
 }
 
 .period-text {
@@ -109,8 +100,8 @@ body {
     border-radius: 10px;
     margin-left: 0px;
     box-shadow:
-    0 2px 4px 0 rgb(0 0 0 / 40%),
-    0 2.5rem 5rem 0 rgb(0 0 0 / 20%);
+        0 2px 4px 0 rgb(0 0 0 / 40%),
+        0 2.5rem 5rem 0 rgb(0 0 0 / 20%);
 }
 
 .time-text {
@@ -132,8 +123,8 @@ body {
     border-radius: 10px;
     margin-left: 0px;
     box-shadow:
-    0 2px 4px 0 rgb(0 0 0 / 40%),
-    0 2.5rem 5rem 0 rgb(0 0 0 / 20%);
+        0 2px 4px 0 rgb(0 0 0 / 40%),
+        0 2.5rem 5rem 0 rgb(0 0 0 / 20%);
 }
 
 .shot-timer {
@@ -156,8 +147,8 @@ body {
     margin-left: 0px;
     cursor: pointer;
     box-shadow:
-    0 2px 4px 0 rgb(0 0 0 / 40%),
-    0 2.5rem 5rem 0 rgb(0 0 0 / 20%);
+        0 2px 4px 0 rgb(0 0 0 / 40%),
+        0 2.5rem 5rem 0 rgb(0 0 0 / 20%);
 }
 
 .stop-icon:hover {
@@ -186,8 +177,8 @@ body {
     margin-left: 0px;
     cursor: pointer;
     box-shadow:
-    0 2px 4px 0 rgb(0 0 0 / 40%),
-    0 2.5rem 5rem 0 rgb(0 0 0 / 20%);
+        0 2px 4px 0 rgb(0 0 0 / 40%),
+        0 2.5rem 5rem 0 rgb(0 0 0 / 20%);
 }
 
 .home-fouls:hover {
@@ -216,8 +207,8 @@ body {
     margin-left: 0px;
     cursor: pointer;
     box-shadow:
-    0 2px 4px 0 rgb(0 0 0 / 40%),
-    0 2.5rem 5rem 0 rgb(0 0 0 / 20%);
+        0 2px 4px 0 rgb(0 0 0 / 40%),
+        0 2.5rem 5rem 0 rgb(0 0 0 / 20%);
 }
 
 .away-fouls:hover {
@@ -241,10 +232,7 @@ body {
 .section {
     display: flex;
     flex-direction: column;
-    /* Stacks child elements vertically */
     align-items: center;
-    /* Centers them horizontally */
-    
 }
 
 h1 {
@@ -253,7 +241,6 @@ h1 {
     font-size: 20px;
     font-weight: 700;
     text-align: center;
-    /* Adds space between text and box */
 }
 
 h1:hover {
@@ -268,11 +255,10 @@ h3 {
     text-align: center;
     margin-bottom: 20px;
     margin-top: 45px;
-    /* Adds space between text and box */
     cursor: default;
     box-shadow:
-    0 2px 4px 0 rgb(0 0 0 / 40%),
-    0 2.5rem 5rem 0 rgb(0 0 0 / 20%);
+        0 2px 4px 0 rgb(0 0 0 / 40%),
+        0 2.5rem 5rem 0 rgb(0 0 0 / 20%);
     border-radius: 10px;
     width: 175px;
     background-color: #080001;
@@ -280,9 +266,9 @@ h3 {
 
 .home-score,
 .guest-score {
-    display: flex; /* Enables flexbox */
-    align-items: center; /* Centers text vertically */
-    justify-content: center; /* Centers text horizontally */
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 160px;
     height: 130px;
     background-color: #080001;
@@ -292,11 +278,12 @@ h3 {
     border-radius: 15px;
     cursor: default;
     box-shadow:
-    0 2px 4px 0 rgb(0 0 0 / 40%),
-    0 2.5rem 5rem 0 rgb(0 0 0 / 20%);
+        0 2px 4px 0 rgb(0 0 0 / 40%),
+        0 2.5rem 5rem 0 rgb(0 0 0 / 20%);
 }
 
-.home-text, .guest-text {
+.home-text,
+.guest-text {
     color: #f94f6d;
     font-family: 'Cursed Timer ULiL', sans-serif;
     font-size: 110px;
@@ -306,27 +293,27 @@ h3 {
 }
 
 .buttons-container {
-    display: flex; /* Aligns rectangles in a row */
-    justify-content: space-between; /* Evenly spaces them */
-    width: 160px; /* Matches .home-score width */
-    margin-top: 30px; /* Space from home-score */
+    display: flex;
+    justify-content: space-between;
+    width: 160px;
+    margin-top: 30px;
 }
 
 .score-button {
-    display: flex; /* Enables flexbox */
-    align-items: center; /* Centers text vertically */
-    justify-content: center; /* Centers text horizontally */
-    flex: 1; /* Each takes equal width */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
     border-radius: 5px;
     border: 0px solid #f94f6d;
     box-sizing: border-box;
     height: 45px;
-    margin: 0 4px; /* Small spacing between boxes */
+    margin: 0 4px;
     background: rgb(0, 0, 0);
     cursor: pointer;
     box-shadow:
-    0 2px 4px 0 rgb(0 0 0 / 40%),
-    0 2.5rem 5rem 0 rgb(0 0 0 / 20%);
+        0 2px 4px 0 rgb(0 0 0 / 40%),
+        0 2.5rem 5rem 0 rgb(0 0 0 / 20%);
 }
 
 .score-button-text {
@@ -341,11 +328,12 @@ h3 {
 
 .score-button:hover {
     background-color: rgba(154, 171, 216, 0.05);
-
     cursor: pointer;
 }
 
-.score-button-text:active, .score-button-text:focus, .score-button-text:hover {
+.score-button-text:active,
+.score-button-text:focus,
+.score-button-text:hover {
     display: inline-block;
     user-select: none;
     cursor: pointer;
