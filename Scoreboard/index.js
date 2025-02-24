@@ -35,12 +35,40 @@ function hAddfoul2(score) {
     }
 }
 
-// Shot Clock
-function startShotClock() {
-    clearInterval(shotTimerInterval); // Clear any existing timer
+// Timer Functions
+// Starts the countdown from 10 minutes.
+// If time reaches 0, it moves to the next period (max 2 periods).
+// Calls updateTimerDisplay() every second to update the UI.
 
-    shotTime = 24; // Reset to 24 seconds
-    updateShotClockDisplay(); // Update UI immediately
+function startTimer() {
+    clearInterval(timerInterval); // Clear any existing timer
+
+    timeLeft = 600; // Reset to 10 minutes
+    updateTimerDisplay(); // Update UI immediately
+
+    timerInterval = setInterval(() => {
+        if (timeLeft > 0) {
+            timeLeft--;
+            updateTimerDisplay();
+        } else {
+            clearInterval(timerInterval);
+            if (period < 2) {
+                addPeriod(); // Move to the next period
+                startTimer(); // Restart for the second period
+            }
+        }
+    }, 1000);
+}
+
+// Shot Clock (24-second timer)
+// Resets to 24 seconds after each possession.
+// Updates every second to show the countdown
+
+function startShotClock() {
+    clearInterval(shotTimerInterval); 
+
+    shotTime = 24; 
+    updateShotClockDisplay(); 
 
     shotTimerInterval = setInterval(() => {
         if (shotTime > 0) {
@@ -69,7 +97,8 @@ function startShotClock() {
     }, 1000);
 }
 
-// Function to format and update the shot clock display
+// Update the shot clock display
+
 function updateShotClockDisplay() {
     let seconds = shotTime;
     let formattedTime = `${seconds < 10 ? '0' : ''}${seconds}`;
@@ -77,28 +106,9 @@ function updateShotClockDisplay() {
     document.getElementById('shot-timer').textContent = formattedTime;
 }
 
-// Period timer
-function startTimer() {
-    clearInterval(timerInterval); // Clear any existing timer
 
-    timeLeft = 600; // Reset to 10 minutes
-    updateTimerDisplay(); // Update UI immediately
+// Update the timer display
 
-    timerInterval = setInterval(() => {
-        if (timeLeft > 0) {
-            timeLeft--;
-            updateTimerDisplay();
-        } else {
-            clearInterval(timerInterval);
-            if (period < 2) {
-                addPeriod(); // Move to the next period
-                startTimer(); // Restart for the second period
-            }
-        }
-    }, 1000);
-}
-
-// Function to format and update the timer display
 function updateTimerDisplay() {
     let minutes = Math.floor(timeLeft / 60);
     let seconds = timeLeft % 60;
@@ -109,6 +119,9 @@ function updateTimerDisplay() {
 
 
 // Winning Score Colour
+// Highlights the leading team in green
+// Resets to red if tied
+
 function updateScoreColor() {
     const homeScore = document.getElementById('score-1');
     const guestScore = document.getElementById('score-2');
@@ -138,6 +151,10 @@ function addPeriod() {
 }
 
 // New Game Function
+// Resets all game state variables to 0
+// Ensures period starts from 1
+// Restarts timers for the game & shot clock
+
 function newGame() {
     score1 = 0;
     score2 = 0;
@@ -161,7 +178,11 @@ function newGame() {
     stopText.textContent = "STOP";
 }
 
-//Stop Timer Function
+// Stop Timer Function
+// Pauses the game and shot clock
+// Toggles the button text between "STOP" and "START"
+// Resumes countdown from where it stopped
+
 function stopButton() {
     const stopText = document.getElementById("stop-text");
 
@@ -205,7 +226,7 @@ let scoreBtn1 = "+1"
 let scoreBtn2 = "+2"
 let scoreBtn3 = "+3"
 
-// Button Functions
+// Add text replacement for score buttons
 document.getElementById('h-btn-1').textContent = scoreBtn1;
 document.getElementById('h-btn-2').textContent = scoreBtn2;
 document.getElementById('h-btn-3').textContent = scoreBtn3;
@@ -214,14 +235,16 @@ document.getElementById('g-btn-1').textContent = scoreBtn1;
 document.getElementById('g-btn-2').textContent = scoreBtn2;
 document.getElementById('g-btn-3').textContent = scoreBtn3;
 
+// Individual score functions
+// These functions update the score and trigger the shot clock.
 
 function hAddScore1(score) {
 
     if (score1 < 99) {
         score1 += 1;
         document.getElementById('score-1').textContent = score1;
-        updateScoreColor();
-        startShotClock();
+        updateScoreColor(); // Checks who is leading
+        startShotClock(); // Resets shot clock on score
     }
 }
 
