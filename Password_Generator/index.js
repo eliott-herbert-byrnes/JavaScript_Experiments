@@ -46,12 +46,12 @@ function symbolsClick() {
 function numbersClick() {
     let currentColor = window.getComputedStyle(includeNumbers).backgroundColor;
 
-    if (currentColor === 'rgb(74, 223, 134)') { // Check for green
-        includeNumbers.style.backgroundColor = '#2A2D2F'; // Change to dark
+    if (currentColor === 'rgb(74, 223, 134)') { 
+        includeNumbers.style.backgroundColor = '#2A2D2F'; 
         numbersText.style.color = 'rgb(74, 223, 134)'
         numbers = false;
     } else {
-        includeNumbers.style.backgroundColor = '#4ADF86'; // Change to green
+        includeNumbers.style.backgroundColor = '#4ADF86'; 
         numbersText.style.color = '#2A2D2F';
         numbers = true;
     }
