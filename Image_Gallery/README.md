@@ -35,7 +35,7 @@ for (let i = 0; i < images.length; i++) {
 }
 ```
 **Image loop explanation**
-```easylanguage
+```javascript
 // Loop through each value in the 'images' array
 
 for (let i = 0; i < images.length; i++) {
