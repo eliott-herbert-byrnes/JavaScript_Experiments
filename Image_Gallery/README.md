@@ -87,7 +87,7 @@ btn.onclick = function() {
 }
 ```
 **Button function explanation**
-```easylanguage
+```javascript
 // Event listener: runs function inside onclick when 'btn' is clicked
 // btn.getAttribute('class'); accesses 'class' for button element
 
