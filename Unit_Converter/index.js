@@ -1,5 +1,5 @@
 // Initialise Variables
-const numberInput = document.getElementById('value');  // Reference to input field
+const numberInput = document.getElementById('value');
 const converter = document.getElementById('Converter');
 const lengthText = document.getElementById('lengthText');
 const volumeText = document.getElementById('volumeText');
