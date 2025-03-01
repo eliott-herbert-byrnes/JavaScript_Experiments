@@ -35,7 +35,7 @@ for (let i = 0; i < images.length; i++) {
 }
 ```
 **Image loop explanation**
-```easylanguage
+```javascript
 // Loop through each value in the 'images' array
 
 for (let i = 0; i < images.length; i++) {
@@ -87,7 +87,7 @@ btn.onclick = function() {
 }
 ```
 **Button function explanation**
-```easylanguage
+```javascript
 // Event listener: runs function inside onclick when 'btn' is clicked
 // btn.getAttribute('class'); accesses 'class' for button element
 
