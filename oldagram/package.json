@@ -8,7 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "Scrim-s01kgac": "file:",
     "vite": "latest"
-  },
-  "devDependencies": {}
+  }
 }
