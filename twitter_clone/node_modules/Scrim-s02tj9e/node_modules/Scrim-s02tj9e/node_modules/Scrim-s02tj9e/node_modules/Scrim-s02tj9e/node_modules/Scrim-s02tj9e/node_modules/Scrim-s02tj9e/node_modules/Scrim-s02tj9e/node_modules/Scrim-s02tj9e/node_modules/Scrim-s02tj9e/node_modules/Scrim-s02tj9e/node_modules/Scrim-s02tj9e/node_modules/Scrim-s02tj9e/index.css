@@ -119,31 +119,18 @@ textarea {
 
 .comment-details {
     display: flex;
+    justify-items: flex-start;
+    gap: 25px;
     font-size: 13px;
-    justify-content: space-between;
-    width: 95%;
     color: #8899A6; 
-    margin-top: 5;  
-}
-
-.tweet-details {
-    display: flex;
-    font-size: 13px;
-    justify-content: space-between;
-    width: 100%;
-    color: #8899A6;
-}
-
-.tweet-detail {
-    display: flex;
-    gap: 4px;
+    margin-top: 5px; 
 }
 
 .tweet-reply {
     border-top: 1px solid #38444D;
     padding: 15px 0 0 10px;
     margin: 20px 0 10px 0px;
-    width: 100%;
+    width: 95%;
     font-size: 14px;
     color: #E1E8ED;
 }
