@@ -1,0 +1,41 @@
+<html>
+
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Artlify</title>
+</head>
+
+
+<body>
+
+    <header>
+        <h1>Artlify</h1>
+        <h2>Turn portraits into custom art</h2>
+    </header>
+    
+    <div class="container" id="container">
+    </div>
+    
+    <div class="form-container hidden" id="form-container">
+        <form class="form-pay">
+            <div class="form-title">
+                <h3>Enter Details</h3>
+            </div>
+            <input type="text" id="fname" placeholder="Enter your name" required>   
+            <input type="number" id="fnumber" maxlength="16" placeholder="Enter your card number" required>   
+            <input type="number" id="fcvv" maxlength="3" placeholder="CVV" required>   
+            <input type="email" id="femail" pattern=".+@example\.com" placeholder="Enter your email" required>   
+            <button class="complete-form-btn" aria-label="pay" data-pay="">
+                <h4>Pay<h4>
+            </button>
+        </form>
+    </div>
+
+    <script src="index.js" type="module"></script>
+
+</body>
+
+</html>
