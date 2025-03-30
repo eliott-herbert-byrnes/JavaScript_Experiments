@@ -1,8 +1,6 @@
 # Artlify
 Artlify is a simple and elegant JavaScript web app that simulates an online art print store. Visitors can browse a curated selection of items, add up to three to their basket, and complete a mock checkout experience via a dynamic form.
 
-![Artlify Preview](/images/readme-preview.png)
-
 ## Key Features
 - Interactive Shopping Cart
 Users can add and remove items with intuitive controls. The cart is limited to 3 unique items to simulate a “limited edition” experience.
