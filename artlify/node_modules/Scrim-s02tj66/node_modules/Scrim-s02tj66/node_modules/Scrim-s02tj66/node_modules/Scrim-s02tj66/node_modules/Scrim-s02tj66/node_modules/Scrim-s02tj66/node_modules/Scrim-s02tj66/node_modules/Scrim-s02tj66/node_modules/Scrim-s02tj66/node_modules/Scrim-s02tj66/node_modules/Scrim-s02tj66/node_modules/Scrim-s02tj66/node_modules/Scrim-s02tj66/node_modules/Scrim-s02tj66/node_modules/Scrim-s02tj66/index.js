@@ -9,8 +9,15 @@ document.addEventListener('click', e => {
     if(e.target.dataset.remove){
         handleRemoveClick(e.target.dataset.remove)
     }
-    if(e.target.id === 'complete-order-btn'){
-        handleCompleteClick()
+    
+    const completeOrderBtn = e.target.closest('#complete-order-btn');
+    if (completeOrderBtn) {
+        handleCompleteClick();
+    }
+
+    if(e.target.id === 'complete-form-btn'){
+        console.log(e.target.id)
+        handleCompleteForm()
     }
 })
 
@@ -21,7 +28,12 @@ function handleAddClick(id) {
     
     if (shoppingBasketArr.length <= 2 && !shoppingBasketArr.includes(targetItemObj)) {
         shoppingBasketArr.push(targetItemObj)
-    } 
+    } else if (shoppingBasketArr.length > 2) {
+        throw new Error('Basket is full!')
+    } else {
+        throw new Error('Item is already in basket!')
+
+    }
 
     render()
 
@@ -42,10 +54,48 @@ function itemsTotal(shoppingBasketArr){
         return acc + elm.price
     }, 0)
 
-    console.log(totalCost)
     return Math.round(totalCost * 100) / 100
 
 }
+
+function generateReceipt(){
+    return `    
+    <div class="receipt-container" id="receipt-container">
+        <h4>Thanks ${document.getElementById('fname').value}, your order is on the way!</h4>
+    </div>
+    `
+}
+
+function handleCompleteForm(){
+    const nameInput = document.getElementById('fname');
+    const name = nameInput ? nameInput.value : 'there';
+
+    document.getElementById('form-container').classList.add('hidden');
+    shoppingBasketArr = [];
+
+    const receipt = generateReceipt(name)
+    saleItems.innerHTML = receipt;
+}
+
+function generateFormMarkup(){
+    return `    
+    <div class="form-container hidden" id="form-container">
+        <form class="form-pay">
+            <div class="form-title">
+                <h3>Enter Details</h3>
+            </div>
+            <input type="text" id="fname" placeholder="Enter your name" required>   
+            <input type="number" id="fnumber" maxlength="16" placeholder="Enter your card number" required>   
+            <input type="number" id="fcvv" maxlength="3" placeholder="CVV" required>   
+            <input type="email" id="femail" pattern=".+@example\.com" placeholder="Enter your email" required>   
+            <button class="complete-form-btn" aria-label="pay" id="complete-form-btn" type="button">
+                <h4 id="complete-form-btn">Pay</h4>
+            </button>
+        </form>
+    </div>
+    `
+}
+
 
 function handleCompleteClick(){
     document.getElementById('form-container').classList.toggle('hidden');
@@ -106,11 +156,11 @@ const basketItemGenerator = (() => {
 
             <div class="basket-total-container">
                 <h4>Total</h4>
-                <h4 class="total-item-price">${itemsTotal(shoppingBasketArr)}</h4>
+                <h4 class="total-item-price">$${itemsTotal(shoppingBasketArr)}</h4>
             </div>
 
             <button class="complete-order-btn" id="complete-order-btn" aria-label="Complete order">
-                <h4>Complete Order<h4>
+                <h4>Complete Order</h4>
             </button>
 
         </div>
@@ -118,10 +168,11 @@ const basketItemGenerator = (() => {
     `
 })
 
-function render(main, basket) {
+function render(main, basket, form) {
     main = saleItemsGenerator(menuArray)
     basket = shoppingBasketArr.length > 0 ? basketItemGenerator() : ''
-    saleItems.innerHTML = (main + basket)
+    form = generateFormMarkup()
+    saleItems.innerHTML = (main + basket + form)
 }
 
 render()

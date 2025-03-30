@@ -197,7 +197,6 @@ header::after {
     display: flex;
     align-items: center;
     justify-content: center;
-    /* margin: 0 auto; */
     background-color: #4B5563;
     color: #F3F4F6;
     border: none;
@@ -214,6 +213,13 @@ header::after {
     color: #4B5563;
     box-shadow: 0px 4px 4px 0px #00000040;
 
+}
+
+.receipt-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 25px;
 }
 
 .ellipse-container {
