@@ -1,19 +1,49 @@
-# Getting Started
-Install the dependencies and run the project
+# Artlify
+Artlify is a simple and elegant JavaScript web app that simulates an online art print store. Visitors can browse a curated selection of items, add up to three to their basket, and complete a mock checkout experience via a dynamic form.
+
+## Key Features
+- Interactive Shopping Cart
+Users can add and remove items with intuitive controls. The cart is limited to 3 unique items to simulate a “limited edition” experience.
+
+- Live Total Calculation
+The total price of items in the basket is calculated in real-time as users interact with the cart.
+
+- Order Completion Flow
+A mock payment form is presented on checkout, requiring name, email, card number, and CVV. Once submitted, a custom thank-you message is displayed.
+
+- Single Page UI
+The entire app is rendered dynamically with JavaScript. No page reloads or navigation required.
+
+- Basic Input Validation
+The form includes required fields and some basic patterns (like email validation).
+
+## Tech Stack
+
+- Vanilla JavaScript (ES6)
+- HTML & CSS
+- Modular JS structure using import / export
+- Asset-driven design (each item image is sourced via its unique id)
+
+## Project Structure
+```kotlin
+├── index.html
+├── index.js         // Main app logic
+├── data.js          // Menu item data
+├── images/          // Product images (named by ID)
+├── styles.css       // App styling
+└── README.md
 ```
-npm install
-npm start
+## How to Run
+```bash
+git clone https://github.com/your-username/artlify.git
 ```
-
-Head over to https://vitejs.dev/ to learn more about configuring vite
-## About Scrimba
-
-At Scrimba our goal is to create the best possible coding school at the cost of a gym membership! 💜
-If we succeed with this, it will give anyone who wants to become a software developer a realistic shot at succeeding, regardless of where they live and the size of their wallets 🎉
-The Frontend Developer Career Path aims to teach you everything you need to become a Junior Developer, or you could take a deep-dive with one of our advanced courses 🚀
-
-- [Our courses](https://scrimba.com/allcourses)
-- [The Frontend Career Path](https://scrimba.com/learn/frontend)
-- [Become a Scrimba Pro member](https://scrimba.com/pricing)
-
-Happy Coding!
+## Limitations
+- No persistent state — cart resets on page refresh.
+- Checkout form is not connected to a real payment processor.
+- Input validation is minimal and for demonstration purposes only.
+## To-Do / Potential Improvements
+- Add localStorage to persist the cart between sessions
+- Improve input validation with real-time feedback
+- Make the UI fully responsive
+- Add quantity support and filtering
+- Animate transitions (e.g. when adding/removing items
