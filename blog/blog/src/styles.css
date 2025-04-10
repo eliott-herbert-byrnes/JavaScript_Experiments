@@ -1,0 +1,98 @@
+html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    color: #F3F4F6;
+    background-color: #25272B;
+}
+
+body {
+    display: grid;
+    grid-template-areas:
+        "head"
+        "main"
+        "foot";
+    gap: 1em;
+    margin: 0;
+}
+
+header {
+    grid-area: head;
+    border: solid white 1px;
+    margin: 0 auto;
+    width: min(99%, 600px);
+}
+
+main {
+    grid-area: main;
+    display: grid;
+    gap: 1em;
+    grid-template-areas:
+        "hero"
+        "post";
+    margin: 0 auto;
+    width: min(100%, 600px); 
+}
+
+.homeHero{
+    background-color: rgb(255, 0, 0);
+    grid-area: hero;
+}
+
+.homePosts{
+    background-color: blue;
+    grid-area: post;
+}
+
+footer {
+    border: solid white 1px;
+    grid-area: foot;
+}
+
+.headerContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em;
+}
+
+.nav {
+    display: flex;
+    gap: 0.5em;
+    list-style: none;
+    padding: 0; 
+    margin: 0; 
+    text-decoration: none;
+
+}
+
+.footerContent{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1em;
+    gap: 0.25em;
+}
+
+a {
+    text-decoration: none;
+    color: #F3F4F6;
+}
+
+h1 {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+h3 {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+h4 {
+    margin: 0;
+    font-size: 0.8rem;
+    font-weight: 300;
+}
