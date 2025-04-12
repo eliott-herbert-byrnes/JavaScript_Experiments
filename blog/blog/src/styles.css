@@ -1,6 +1,16 @@
-html {
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
     margin: 0;
     padding: 0;
+}
+
+html {
     font-family: 'Roboto', sans-serif;
     color: #F3F4F6;
     background-color: #25272B;
@@ -8,20 +18,18 @@ html {
 
 body {
     display: grid;
+    grid-template-rows: auto 1fr auto;
     grid-template-areas:
         "head"
         "main"
         "foot";
-    gap: 1em;
-    margin: 0;
+    min-height: 100vh;
 }
 
 header {
     grid-area: head;
-    border: solid white 1px;
     margin: 0 auto;
-    /* width: min(99%, 600px); */
-    width: 98%;
+    width: 100%;
 }
 
 .headerContainer {
@@ -41,30 +49,152 @@ main {
         "post";
     margin: 0 auto;
     /* width: min(100%, 600px);  */
-    width: 98%;
+    width: 100%;
 }
 
 .homeHero{
-    background-color: rgb(255, 0, 0);
+    /* background-color: rgb(255, 0, 0); */
     grid-area: hero;
+    margin: 0;
+}
+
+.hero-post {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: max(300px);
+    color: white;
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+    gap: 0.5em;
+    padding: 1rem;
+}
+
+.hero-link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 0.5em;
+    height: 100%;
+}
+
+.hero-link img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit:cover;
+    z-index: 0;
+}
+
+.hero-link > * {
+    position: relative;
+    z-index: 1;
+    margin: 0;
+}
+
+.hero-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); 
+    z-index: 0;
+}
+
+.hero-link p:first-of-type {
+    font-size: 0.9em;
+    opacity: 0.9;
+}
+
+.hero-link h3 {
+    font-size: 1.5rem;
+}
+
+.hero-link p:last-of-type {
+    font-size: 1rem;
 }
 
 .homePosts{
-    background-color: blue;
     grid-area: post;
 }
 
-footer {
+.homePosts{
+    display: grid;
+    gap: 1em;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     margin: 0 auto;
-    border: solid white 1px;
+    width: 100%;
+}
+
+.postCard {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+    border-radius: 5px;
+    color: white;
+}
+
+.postCard img {
+    object-fit: cover;
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.postCard p:first-of-type {
+    font-size: 0.8rem;
+    opacity: 0.8;
+    margin-top: 0.5rem;
+}
+
+.postCard h3 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.postCard p:last-of-type {
+    margin: 0;
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.postCard img:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+}
+
+.viewMoreClick{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    margin-bottom: 1em;
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: underline;
+}
+
+footer {
     grid-area: foot;
-    width: 98%;
+    width: 100%;
+    text-align: center;
 }
 
 .footerContent{
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     padding: 1em;
     gap: 0.25em;
 }
@@ -99,3 +229,158 @@ h4 {
     font-size: 0.8rem;
     font-weight: 300;
 }
+
+p {
+    margin: 0;
+    font-size: 0.8rem;
+    font-weight: 300;
+}
+
+/* Individual Posts */
+
+.post-container {
+    display: grid;
+    gap: 1em;
+    grid-template-areas:
+        "post"
+        "comments";
+    margin: 0.75em 0 auto;
+    width: 100%;
+    padding: 1em;
+}
+
+.post-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    object-fit:contain;
+    margin: 0 auto;
+}
+.post-container h2 {
+    font-size: 2rem;
+    margin: 0;
+}
+
+.post-container p {
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.post-container h3 {
+    font-size: 1rem;
+    margin: 0;
+}
+
+.post-container li {
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.recentPosts{
+    margin: 0 auto;
+}
+
+.recentPostsTitle{
+    display: flex;
+    justify-content: center;
+}
+
+/* Recent Posts */
+
+.singlePostCardContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    border-radius: 5px;
+    color: white;
+}
+
+.singlePostCardContainer a {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: white;
+}
+
+/* About Me Section */
+
+.aboutMeContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1em;
+    border-radius: 5px;
+    color: white;
+}
+.aboutMeContainer img {
+    width: 50%;
+    height: auto;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.aboutMeTitleContainer {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1em;
+}
+
+.aboutMeTextContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1em;
+
+}
+
+.aboutMeTextContainer p {
+    opacity: 0.9;
+}
+
+/* Burger Nav */
+/* Basic nav styles */
+.topnav {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+/* Hide nav links by default on small screens */
+.nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #25272B;
+    padding: 1rem;
+    border-radius: 5px;
+}
+
+/* Show menu when active */
+.nav-links.active {
+    display: flex;
+}
+
+/* Hamburger button styling */
+.nav-toggle {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+/* Optional: style nav links */
+.nav-links a {
+    color: #F3F4F6;
+    text-decoration: none;
+    margin-bottom: 0.5rem;
+}
+
+.nav-links a:last-child {
+    margin-bottom: 0;
+}
+
