@@ -1,5 +1,26 @@
 import { posts } from './data/posts.js';
 
+document.addEventListener('DOMContentLoaded', () => {
+    loadHTML('header', '/header.html', () => {
+        setupMobileNav();
+    });
+    loadHTML('footer', '/footer.html', updateFooterDate);
+    renderPost();
+    renderRecentPosts();
+});
+
+function setupMobileNav() {
+    const toggleButton = document.querySelector('.nav-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    if (toggleButton && navLinks) {
+        toggleButton.addEventListener('click', () => {
+            console.log('Hamburger clicked'); 
+            navLinks.classList.toggle('active');
+        });
+    }
+}
+
 async function loadHTML(id, url, callback) {
     const response = await fetch(url);
     const content = await response.text();
@@ -23,7 +44,7 @@ function renderFeatures(features) {
     return features ? features.map(feature => `<li>${feature}</li>`).join('') : 'Coming soon';
 }
 
-function renderStack(stack) {   
+function renderStack(stack) {
     return stack ? stack.map(item => `<li>${item}</li>`).join('') : 'Coming soon';
 }
 
@@ -82,14 +103,8 @@ function renderRecentPosts() {
         return;
     }
 
-        recentPosts.forEach(post => {
-            recentPostsContainer.appendChild(createPostCard(post));
-    }); 
+    recentPosts.forEach(post => {
+        recentPostsContainer.appendChild(createPostCard(post));
+    });
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    loadHTML('header', '/header.html');
-    loadHTML('footer', '/footer.html', updateFooterDate);
-    renderPost();
-    renderRecentPosts();
-});

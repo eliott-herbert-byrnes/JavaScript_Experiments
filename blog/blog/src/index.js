@@ -7,6 +7,7 @@ function setupMobileNav() {
 
     if (toggleButton && navLinks) {
         toggleButton.addEventListener('click', () => {
+            console.log('Hamburger clicked'); 
             navLinks.classList.toggle('active');
         });
     }
@@ -16,16 +17,18 @@ const viewMoreClick = document.getElementById('viewMoreClick');
 
 // Event listener to load header and footer after the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', () => {
-    loadHTML('header', '/header.html');
+    loadHTML('header', '/header.html', () => {
+        setupMobileNav(); 
+    });
     loadHTML('footer', '/footer.html', updateFooterDate);
-    setupMobileNav();
     renderHero();
     renderPosts();
     viewMoreClick.addEventListener('click', () => {
         viewMoreClick.style.display = 'none';
-        renderViewMore()
-    })
+        renderViewMore();
+    });
 });
+
 
 // Load hero post
 function renderHero() {
