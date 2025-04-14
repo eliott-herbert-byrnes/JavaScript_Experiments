@@ -28,7 +28,7 @@ const posts = [
     }
 ]
 
-
+// Generates each post with data from the posts array and renders to the DOM
 const postGenerator = ((posts) => {
     return posts.map(item => {
         const { name, username, location, avatar, post, comment, likes } = item
@@ -70,6 +70,7 @@ const postGenerator = ((posts) => {
 const firstPost = document.getElementById('container');
 const heartIcon = document.getElementById('icon1')
 
+// Functionality for handling likes on posts
 setTimeout(() => {
     document.querySelectorAll('.icon-1').forEach((icon, index) => {
         let liked = false;
