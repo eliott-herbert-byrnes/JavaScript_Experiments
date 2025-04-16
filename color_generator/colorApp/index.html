@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap"
+    rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Colour App</title>
+</head>
+
+<body>
+  <main>
+
+    <nav>
+
+      <div class="colorSelector">
+        <input type="color" id="html5colorpicker" value="#F55A5A">
+      </div>
+
+      <div class="colorDropdown">
+        <button class="colorDropdownButton" id="colorDropdownButton"></button>
+        <div class="colorDropdownContent" id="colorDropdownContent">
+          <div class="colorDropdownItem" id="monochrome">
+            <p>Monochrome</p>
+          </div>
+          <div class="colorDropdownItem" id="monochrome-dark">
+            <p>Monochrome-dark</p>
+          </div>
+          <div class="colorDropdownItem" id="monochrome-light">
+            <p>Monochrome-light</p>
+          </div>
+          <div class="colorDropdownItem" id="analogic">
+            <p>Analogic</p>
+          </div>
+          <div class="colorDropdownItem" id="complement">
+            <p>Complement</p>
+          </div>
+          <div class="colorDropdownItem" id="analogic-complement">
+            <p>Analogic-complement</p>
+          </div>
+          <div class="colorDropdownItem" id="triad">
+            <p>Triad</p>
+          </div>
+        </div>
+      </div>
+
+      <button id="colorButton">
+        <p>Get color scheme</p>
+      </button>
+
+    </nav>
+
+    <!-- Individual color box's -->
+    <div class="color1" id="color1"></div>
+    <div class="color2" id="color2"></div>
+    <div class="color3" id="color3"></div>
+    <div class="color4" id="color4"></div>
+    <div class="color5" id="color5"></div>
+
+    <!-- Individual Color Text -->
+    <div class="colorText1" id="colorText1">
+      <p>#F55A5A</p>
+    </div>
+    <div class="colorText2" id="colorText2">
+      <p>#F55A5A</p>
+    </div>
+    <div class="colorText3" id="colorText3">
+      <p>#F55A5A</p>
+    </div>
+    <div class="colorText4" id="colorText4">
+      <p>#F55A5A</p>
+    </div>
+    <div class="colorText5" id="colorText5">
+      <p>#F55A5A</p>
+    </div>
+
+  </main>
+  <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>
