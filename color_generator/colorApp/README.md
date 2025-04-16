@@ -1,5 +1,32 @@
-# Vue 3 + Vite
+#  Color Scheme Generator
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+A simple, responsive color scheme generator built with HTML, CSS, and vanilla JavaScript. Users can select a base color and generate a range of color schemes (monochrome, analogic, complement, etc.) using [The Color API](https://www.thecolorapi.com/).
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+---
+
+## Features
+
+- 🎯 Select any base color using the native HTML5 color picker
+- 🎨 Choose from multiple color harmony modes:
+  - Monochrome
+  - Monochrome-dark
+  - Monochrome-light
+  - Analogic
+  - Complement
+  - Analogic-complement
+  - Triad
+- 🔍 Fetches color schemes dynamically using The Color API
+- 💬 Displays color hex codes and updates the UI in real-time
+- 🧼 Clean, minimal layout with accessible interactions
+
+---
+
+## Tech Stack
+
+- HTML5
+- CSS3 (with custom styling and Google Fonts)
+- Vanilla JavaScript (DOM manipulation, `fetch`, events)
+- [The Color API](https://www.thecolorapi.com/) for color scheme data
+
+---
+
