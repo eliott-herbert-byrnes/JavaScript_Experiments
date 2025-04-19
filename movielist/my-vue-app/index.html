@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+    rel="stylesheet">
+  <title>Movie List</title>
+</head>
+
+<body>
+  <main>
+
+    <div class="headerIMG">
+      <div class="nav">
+        <h1>Find your film</h1>
+        <a href="/watchlist.html" class="watchlist">
+          <h2>My Watchlist</h2>
+        </a>
+      </div>
+    </div>
+
+    <div class="searchBar">
+      <form>
+        <div>
+          <div class="searchIcon">
+            <img class="searchIMG" src="img/search.svg" alt="search icon" />
+          </div>
+          <input type="search" id="mySearch" name="q" placeholder="Blade Runner"/>
+          <button type="button" id="searchBtn">Search</button>
+        </div>
+      </form>
+    </div>
+
+
+    <div id="contentContainer" class="contentContainer">
+
+      <div id="startExploring" class="startExploring">
+        <img src="img/film.svg" alt="film icon"/>
+        <h2>Start exploring</h2>
+      </div>
+
+      <div id="movieSearchError" class="movieSearchError hidden">
+        <h2>Unable to find what you're looking for. Please try another search</h2>
+      </div>
+
+    </div>
+
+  </main>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>

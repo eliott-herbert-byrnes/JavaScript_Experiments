@@ -1,0 +1,241 @@
+:root {
+  font-family: "Inter", sans-serif;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #121212;;
+
+}
+
+html, body{
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+main{
+  display: flex;
+  flex-direction: column;
+}
+
+.headerIMG{
+  display: flex;
+  justify-content: center;
+  background-image: url("/img/header.png");
+  width: 100%;
+  height: 308px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  z-index: 0;
+}
+
+.nav{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5rem;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding: 0 31rem;
+}
+
+.searchBar{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 34%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  width: 100%;
+}
+
+.searchBar form > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+}
+
+.searchIcon{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  width: 50px;
+  background-color: #2E2E2F;
+  border: none;
+  border-radius: 5px 0 0 5px;
+
+}
+
+.searchIcon > img{
+  width: 1.5rem;
+  height: 1.5rem;
+  display: block;
+}
+
+
+#mySearch, #searchBtn{
+  font-size: 1.25rem;
+  background-color: #2E2E2F;
+  border: none;
+  height: 50px;
+  max-width: 750px;
+  color: #fff;
+}
+
+#mySearch:focus {
+  border: none;
+  outline: none;
+}
+
+#searchBtn{
+  background-color: #4B4B4B;
+  width: 125px;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+
+}
+
+#searchBtn:hover{
+  background-color: #5B5B5B;
+}
+
+.contentContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.movieCard{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 4rem;
+  margin-left: 31rem;
+}
+
+.movieCard > img{
+  width: 200px;
+  height: 300px;
+  border-radius: 5px;
+  margin: 0;
+  padding: 0;
+}
+
+.startExploring{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 0 auto;
+  margin-top: 17.5rem;
+
+}
+
+.startExploring > h2{
+  color: #2E2E2F;
+
+}
+
+.movieSearchError{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 0 auto;
+  margin-top: 17.5rem;
+}
+
+.movieSearchError > h2{
+  color: #787878;
+}
+
+.watchlist{
+  text-decoration: none;
+}
+
+.hidden{
+  display: none;
+}
+
+.searchHidden{
+  display: none;
+}
+
+.watchlist:hover{
+  text-decoration: underline;
+  text-decoration-color: #fff;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+  transition: all 0.3s ease-in-out;
+}
+
+.emptyWatchlist{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 17.5rem;
+}
+
+.emptyWatchlist > h2{
+  color: #787878;
+}
+
+.addMoviesContainer{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.addMoviesContainer{
+  cursor: pointer;
+}
+
+#addMoviesLink{
+  text-decoration: none;
+  color: #fff;
+}
+
+#addMoviesLink:hover > h3{
+  transition: all 0.6s ease-in-out;
+  text-decoration-color: #fff;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+h1, h2, h3, h4, p{
+  margin: 0;
+  padding: 0;
+}
+
+h1{
+  font-size: 5rem;
+  font-weight: 800;
+  color: #fff;
+}
+
+h2{
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
+}
