@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DateTime</title>
+  </head>
+  <body>
+    <main>
+
+      <a data-micromodal-trigger="modal-1" href='javascript:;'>
+        <h3>Switch Timezones</h3>
+      </a>
+      <div class="micromodal" id="modal-1" aria-hidden="true">
+        <div class="micromodal__overlay" tabindex="-1" data-micromodal-close>
+          <div class="micromodal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
+            <button aria-label="Close modal" data-micromodal-close>X</button>
+            <p id="EU">Europe/Berlin</p>
+            <p id="US">America/New_York</p>
+          </div>
+        </div>
+      </div>   
+    </main>
+    <div id="app"></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
